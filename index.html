@@ -1,0 +1,711 @@
+<title>Panacci Rule &amp; Rail</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@300;400&family=Public+Sans:wght@300;400;600&display=swap">
+
+<style>
+/* ============================================================
+   PANACCI — direction 05 · Rule & Rail
+   Light prototype. Structure and copy are real; this is not the
+   Next.js build. Single committed light palette by design.
+
+   v3 · Hero stays text — no hero photograph.
+      · One big full-bleed background band carries the claim.
+      · Imagery only where it earns its place: the band, the
+        portrait, four case thumbnails, Mordecai. Nothing else.
+      · Mobile: the rail becomes a thumb-reachable action bar.
+   ============================================================ */
+:root{
+  --paper:#FBFAF8;
+  --paper-2:#F4F2ED;
+  --ink:#1A1B1D;
+  --body:#4A4C4A;
+  --mute:#8A887F;
+  --hair:#E5E3DB;
+  --rule:#D5D2C9;
+  --green:#2E4A3F;
+  --green-dk:#22382E;
+  --plate:#E3E0D8;
+  --plate-dk:#20241F;
+  --measure:62ch;
+  --gutter:clamp(18px,4.4vw,56px);
+  --bar-h:64px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--body);
+  font-family:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  font-weight:300;
+  font-size:17px;
+  line-height:1.62;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+h1,h2,h3,h4{color:var(--ink);margin:0;text-wrap:balance;font-weight:400}
+h1,h2{font-family:"Fraunces",Georgia,serif;font-weight:300;letter-spacing:-.022em;line-height:1.06}
+h1{font-size:clamp(35px,6.1vw,66px);font-variation-settings:"opsz" 120}
+h2{font-size:clamp(25px,3.3vw,38px);font-variation-settings:"opsz" 72}
+h3{font-size:19px;font-weight:600;letter-spacing:-.005em;line-height:1.35}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:1px}
+
+.lbl{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:400;
+  font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--mute);
+}
+.hair{height:1px;background:var(--hair);border:0;margin:0}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---- shell: main column + sticky facts rail ---- */
+.shell{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,1fr) 316px;
+  align-items:start;
+}
+.col{min-width:0;padding:0 var(--gutter)}
+.rail{
+  position:sticky;top:0;
+  border-left:1px solid var(--rule);
+  padding:clamp(28px,4vw,44px) clamp(20px,2.6vw,32px);
+  display:flex;flex-direction:column;gap:26px;
+  align-self:start;
+}
+.rail-item{display:flex;flex-direction:column;gap:5px}
+.rail-item .v{font-size:19px;color:var(--ink);line-height:1.25}
+.rail .rate{
+  font-family:"Fraunces",Georgia,serif;font-weight:300;font-variation-settings:"opsz" 96;
+  font-size:42px;line-height:1;letter-spacing:-.03em;color:var(--ink);
+}
+
+/* ---- sections ---- */
+header.masthead{padding:clamp(22px,3.4vw,40px) 0 0}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.wordmark{
+  font-family:"Fraunces",Georgia,serif;font-weight:400;font-variation-settings:"opsz" 24;
+  font-size:23px;letter-spacing:-.01em;color:var(--ink);
+}
+section{padding:clamp(40px,6vw,78px) 0;border-top:1px solid var(--hair)}
+section:first-of-type{border-top:0;padding-top:clamp(26px,4vw,48px)}
+.sec-head{display:flex;flex-direction:column;gap:13px;margin-bottom:clamp(22px,3vw,38px)}
+.lede{font-size:clamp(17.5px,2vw,21px);line-height:1.5;color:var(--ink);max-width:46ch}
+.copy{max-width:var(--measure)}
+
+/* ---- hero: type and figures only ---- */
+.hero h1{max-width:15ch;margin-bottom:20px}
+.hero .sub{font-size:clamp(17px,1.9vw,20px);line-height:1.5;max-width:44ch;margin-bottom:28px}
+.hero-facts{display:none}
+
+/* ---- status ---- */
+.status{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--ink);letter-spacing:.01em}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:block;flex:none}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--green);color:#F7F6F2;text-decoration:none;
+  font-size:15.5px;font-weight:400;letter-spacing:.01em;
+  padding:14px 22px;min-height:48px;transition:background .18s ease;
+}
+.btn:hover{background:var(--green-dk)}
+.btn svg{width:15px;height:15px;flex:none}
+.link{
+  display:inline-flex;align-items:center;gap:8px;color:var(--green);
+  text-decoration:none;border-bottom:1px solid var(--green);padding-bottom:3px;font-size:16px;
+}
+.link:hover{color:var(--green-dk);border-color:var(--green-dk)}
+.link svg{width:14px;height:14px;flex:none}
+
+/* ============================================================
+   THE BAND — the one big background image on the page.
+   Built dark-first so an ordinary photograph still reads as a
+   deliberate crop: the image sits under a solid ground at
+   partial opacity, and the type never depends on it.
+   ============================================================ */
+.band{
+  position:relative;isolation:isolate;
+  margin:0 calc(var(--gutter) * -1);
+  min-height:clamp(300px,42vw,440px);
+  background:var(--plate-dk);
+  color:#EFEDE7;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(26px,4vw,52px);
+  overflow:hidden;
+}
+/* stand-in for the photograph — replace with the real image */
+.band:before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(118deg,#2C312B 0%,#1B1F1A 46%,#252A24 100%),
+    radial-gradient(90% 70% at 74% 8%,rgba(216,214,200,.22),transparent 62%);
+}
+.band:after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(16,19,15,.74) 0%,rgba(16,19,15,.28) 52%,rgba(16,19,15,.12) 100%);
+}
+.band .band-claim{
+  font-family:"Fraunces",Georgia,serif;font-weight:300;font-style:italic;
+  font-size:clamp(27px,4.4vw,52px);line-height:1.08;letter-spacing:-.025em;
+  color:#F4F2EC;max-width:17ch;margin:0 0 16px;
+}
+.band .band-sub{font-size:clamp(15.5px,1.8vw,18px);line-height:1.5;max-width:46ch;color:#CFCDC3}
+.band .band-note{
+  position:absolute;top:clamp(20px,3vw,32px);left:clamp(26px,4vw,52px);right:clamp(26px,4vw,52px);
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(239,237,231,.5);line-height:1.6;max-width:44ch;
+}
+
+/* ---- image plates (portrait, case thumbnails, Mordecai) ---- */
+.plate{
+  margin:0;background:var(--plate);position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;padding:12px;
+}
+.plate:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 92% at 32% 16%,rgba(255,255,255,.6),transparent 64%);
+}
+.plate-tag{
+  position:relative;z-index:1;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:#78736A;line-height:1.5;
+}
+.plate--portrait{aspect-ratio:4/5}
+.plate--thumb{aspect-ratio:3/2}
+.plate--sq{aspect-ratio:1/1}
+
+/* ---- promise list ---- */
+.promises{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.promises li{
+  display:grid;grid-template-columns:24px minmax(0,1fr);gap:15px;
+  padding:18px 0;border-top:1px solid var(--hair);align-items:start;
+}
+.promises li:last-child{border-bottom:1px solid var(--hair)}
+.promises .ic{width:20px;height:20px;color:var(--green);margin-top:3px}
+.promises h3{margin-bottom:3px}
+.promises p{max-width:56ch;font-size:16px}
+
+/* ---- plain terms list: no icons, hanging rules only ---- */
+.terms{list-style:none;margin:0;padding:0;max-width:var(--measure)}
+.terms li{padding:14px 0;border-top:1px solid var(--hair);font-size:16.5px;color:var(--ink)}
+.terms li:last-child{border-bottom:1px solid var(--hair)}
+
+/* ---- ways to work ---- */
+.ways{display:grid;gap:0}
+.way{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 32px;
+  padding:22px 0;border-top:1px solid var(--hair);align-items:baseline}
+.way:last-of-type{border-bottom:1px solid var(--hair)}
+.way p{max-width:54ch;font-size:16px;grid-column:1}
+.way .price{
+  font-family:"Fraunces",Georgia,serif;font-weight:300;font-variation-settings:"opsz" 48;
+  font-size:26px;color:var(--ink);letter-spacing:-.02em;grid-row:1;grid-column:2;white-space:nowrap;
+}
+.way .dur{grid-column:2;grid-row:2;text-align:right}
+
+/* ---- proof: deliberately uneven, not a four-up card grid ---- */
+.proof{display:flex;flex-direction:column;border-top:1px solid var(--hair)}
+.pf{
+  display:grid;grid-template-columns:minmax(120px,22%) minmax(0,1fr);gap:16px 36px;
+  padding:20px 0;border-bottom:1px solid var(--hair);align-items:baseline;
+}
+.pf .fig{
+  font-family:"Fraunces",Georgia,serif;font-weight:300;font-variation-settings:"opsz" 96;
+  font-size:clamp(32px,4.2vw,48px);line-height:.95;letter-spacing:-.035em;color:var(--ink);
+}
+.pf p{font-size:16px;line-height:1.5;max-width:52ch}
+.aside-line{margin-top:22px;font-size:15.5px;color:var(--mute);max-width:56ch}
+
+/* ---- selected work: image-led, because this is the tiebreaker ---- */
+.works{display:flex;flex-direction:column}
+.work{
+  display:grid;grid-template-columns:200px minmax(0,1fr) 20px;gap:26px;align-items:start;
+  text-decoration:none;padding:22px 0;border-top:1px solid var(--hair);
+}
+.works .work:last-child{border-bottom:1px solid var(--hair)}
+.work .plate{transition:opacity .18s ease}
+.work:hover .plate{opacity:.86}
+.work h3{margin-bottom:5px}
+.work p{font-size:16px;max-width:56ch}
+.work .out{color:var(--ink)}
+.work .go{width:16px;height:16px;color:var(--green);margin-top:5px}
+
+/* ---- person ---- */
+.person{display:grid;grid-template-columns:216px minmax(0,1fr);gap:30px;align-items:center;
+  margin-top:32px;padding-top:28px;border-top:1px solid var(--hair)}
+.person .nm{font-family:"Fraunces",Georgia,serif;font-weight:300;font-variation-settings:"opsz" 72;
+  font-size:clamp(24px,3vw,32px);color:var(--ink);letter-spacing:-.02em;line-height:1.1;display:block;margin-bottom:8px}
+.person p{font-size:16px;max-width:44ch}
+
+/* ---- book ---- */
+.book-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px 40px;margin-top:8px}
+.book-grid .v{font-size:18px;color:var(--ink)}
+.book-actions{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin-top:26px}
+
+/* ---- rates subpage sketch ---- */
+.subpage{background:var(--paper-2);border-top:1px solid var(--rule)}
+.subpage-inner{max-width:1180px;margin:0 auto;padding:clamp(36px,5vw,64px) var(--gutter)}
+.rate-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:16px}
+.rate-table th,.rate-table td{text-align:left;padding:13px 16px 13px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.rate-table tbody th{color:var(--ink);font-weight:600;font-size:15.5px}
+.rate-table thead th{border-bottom:1px solid var(--ink);font-family:"IBM Plex Mono",monospace;
+  font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.rate-table td.num{white-space:nowrap;color:var(--ink)}
+.two-up{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:32px}
+.two-up ul{margin:12px 0 0;padding-left:19px;font-size:16px}
+.two-up li{margin-bottom:7px}
+
+/* ---- fill markers (prototype scaffolding — delete before launch) ---- */
+.fill{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;
+  color:#7C7669;border-bottom:1px dotted #B9B2A3;white-space:nowrap;
+}
+.btn .fill{color:rgba(247,246,242,.72);border-color:rgba(247,246,242,.45)}
+
+/* ---- footer + Mordecai ---- */
+footer{border-top:1px solid var(--rule);background:var(--paper)}
+.foot-inner{max-width:1180px;margin:0 auto;padding:32px var(--gutter) 44px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 48px;align-items:end}
+.foot-legal p{font-size:14.5px;color:var(--mute);margin-bottom:6px}
+.mordecai{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:center;max-width:380px}
+.mordecai p{font-size:14.5px;color:var(--mute);line-height:1.5}
+.mordecai .nm{color:var(--ink);display:block;font-size:15px;margin-bottom:1px}
+
+/* ---- prototype banner ---- */
+.protobar{
+  background:var(--ink);color:#EDEBE6;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:9px var(--gutter);display:flex;gap:6px 22px;flex-wrap:wrap;justify-content:space-between;
+}
+.protobar span:last-child{opacity:.65}
+
+/* ---- mobile action bar (hidden on desktop) ---- */
+.actionbar{display:none}
+
+/* ============================================================
+   MOBILE LAYER
+   The rail becomes a fixed bottom action bar: availability and
+   rate stay answered, and Book sits under the thumb.
+   ============================================================ */
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}
+
+  body{padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom,0px))}
+
+  .actionbar{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:var(--paper);border-top:1px solid var(--rule);
+    padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom,0px));
+    gap:14px;align-items:center;justify-content:space-between;
+    box-shadow:0 -1px 14px rgba(26,27,29,.07);
+    transition:transform .22s ease;
+  }
+  .actionbar[data-tucked="true"]{transform:translateY(115%)}
+  .actionbar .ab-facts{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .actionbar .ab-rate{font-family:"Fraunces",Georgia,serif;font-weight:300;
+    font-variation-settings:"opsz" 48;font-size:22px;line-height:1.1;color:var(--ink);letter-spacing:-.02em}
+  .actionbar .btn{padding:12px 20px;min-height:46px;white-space:nowrap}
+
+  /* the rail's facts, echoed once, high on the page */
+  .hero-facts{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:20px 24px;
+    margin-top:26px;padding-top:22px;border-top:1px solid var(--hair);
+  }
+  .hero-facts .item{display:flex;flex-direction:column;gap:6px}
+  .hero-facts .big{font-family:"Fraunces",Georgia,serif;font-weight:300;
+    font-variation-settings:"opsz" 96;font-size:38px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
+  .hero-facts .v{font-size:17px;color:var(--ink)}
+
+  .work{grid-template-columns:minmax(0,1fr);gap:14px}
+  .work .go{display:none}
+  .person{grid-template-columns:minmax(0,1fr);gap:20px}
+  .person .plate--portrait{max-width:248px}
+  .band{min-height:0;padding-top:clamp(72px,18vw,110px)}
+}
+
+@media (max-width:640px){
+  body{font-size:16px;line-height:1.6}
+  section{padding:34px 0}
+  .protobar{font-size:10px;letter-spacing:.06em}
+  .way{grid-template-columns:minmax(0,1fr);gap:6px}
+  .way .price,.way .dur{grid-column:1;grid-row:auto;text-align:left}
+  .way .price{font-size:24px}
+  .pf{grid-template-columns:minmax(0,1fr);gap:8px;padding:18px 0}
+  .book-actions .btn,.book-actions .link{width:100%}
+  .book-actions .link{justify-content:center}
+  .foot-inner{grid-template-columns:minmax(0,1fr);gap:26px;align-items:start}
+  .mordecai{grid-template-columns:80px minmax(0,1fr)}
+
+  /* rates table becomes stacked records — no sideways scroll */
+  .rate-table,.rate-table tbody,.rate-table tr,.rate-table th,.rate-table td{display:block;width:100%}
+  .rate-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .rate-table tr{border-bottom:1px solid var(--rule);padding:16px 0}
+  .rate-table th,.rate-table td{border:0;padding:0 0 6px}
+  .rate-table tbody th{font-size:17px;margin-bottom:4px}
+  .rate-table td:before{
+    content:attr(data-l);display:block;
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--mute);margin-bottom:2px;
+  }
+}
+
+@media (max-width:380px){
+  .hero-facts{grid-template-columns:minmax(0,1fr)}
+  .actionbar{gap:10px}
+  .actionbar .btn{padding:12px 16px;font-size:14.5px}
+}
+
+@media print{
+  .protobar,.actionbar,.rail,.btn{display:none}
+  body{background:#fff;font-size:11pt;padding-bottom:0}
+  section{page-break-inside:avoid}
+  .band{background:#eee;color:#000;min-height:0}
+  .plate{border:1px solid #ccc;background:#f4f4f4}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h14"/><path d="m12.5 7.5 4.5 4.5-4.5 4.5"/><path d="M21 4v16"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17"/><path d="M3.5 9.2h17M3.5 14.8h17M9.2 3.5v17M14.8 3.5v17"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="3.8" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-brackets" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4.5H5.5v15h3"/><path d="M15.5 4.5h3v15h-3"/><path d="M10.8 15.5 13.2 8.5"/></symbol>
+  <symbol id="i-page" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13.8 3.5H6v17h12V7.7z"/><path d="M13.8 3.5v4.2H18"/><path d="M9 13h6M9 16.4h4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15.5"/><path d="m14 6.5 5.5 5.5L14 17.5"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10.5 13.5"/><path d="M18 14.5V20H4V6h5.5"/></symbol>
+  <symbol id="i-cat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5.6 10.4 5 5.8l3.3 2.3a8.2 8.2 0 0 1 7.4 0L19 5.8l-.6 4.6c.4.9.6 1.9.6 2.9 0 3.4-3 5.9-7 5.9s-7-2.5-7-5.9c0-1 .2-2 .6-2.9z"/><path d="M9.8 13.2h.01M14.2 13.2h.01"/></symbol>
+</defs></svg>
+
+<div class="protobar">
+  <span>Prototype v3 · direction 05 Rule &amp; Rail</span>
+  <span>Text hero · one background band · 6 real photographs · not the Next.js build</span>
+</div>
+
+<div class="shell">
+  <div class="col">
+
+    <header class="masthead">
+      <div class="brand">
+        <span class="wordmark">Panacci</span>
+        <span class="lbl">Product design &amp; build practice</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1 · HERO — type and figures only, no photograph -->
+      <section class="hero" aria-labelledby="h-hero">
+        <h1 id="h-hero">Complex product work, designed and built by one person.</h1>
+        <p class="sub">Senior overflow capacity for agencies, available immediately. Toronto.</p>
+        <a class="btn" href="#book">Book 20 minutes <span class="fill">cal link</span></a>
+
+        <!-- mobile-only echo of the rail -->
+        <div class="hero-facts">
+          <div class="item"><span class="lbl">Day rate</span><span class="big tnum">$1,000</span></div>
+          <div class="item"><span class="lbl">Availability</span><span class="v"><span class="status"><span class="dot"></span>Available now</span></span></div>
+          <div class="item"><span class="lbl">Next opening</span><span class="v">Immediate</span></div>
+        </div>
+      </section>
+
+      <!-- 2 · WHAT I TAKE OFF YOUR PLATE -->
+      <section aria-labelledby="h-plate">
+        <div class="sec-head">
+          <h2 id="h-plate">Your designers are the bottleneck, not the brief.</h2>
+          <p class="lede">I take a piece of work off the board and hand it back finished.</p>
+        </div>
+        <ul class="promises">
+          <li>
+            <svg class="ic" aria-hidden="true"><use href="#i-enter"/></svg>
+            <div><h3>No ramp.</h3><p>Nine years in-house on complex products. I've read a messy Confluence page before. I won't need a kickoff series.</p></div>
+          </li>
+          <li>
+            <svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>
+            <div><h3>I match your system, not mine.</h3><p>Working inside someone else's design system, brand, and component library is most of what I've done. Your client shouldn't be able to tell.</p></div>
+          </li>
+          <li>
+            <svg class="ic" aria-hidden="true"><use href="#i-loop"/></svg>
+            <div><h3>I close my own loops.</h3><p>I'll ask the questions that matter once and make the call on the rest. You'll get a decision log, not a queue of Slack messages.</p></div>
+          </li>
+          <li>
+            <svg class="ic" aria-hidden="true"><use href="#i-brackets"/></svg>
+            <div><h3>I build, not just draw.</h3><p>Design, prototype, and shipped front-end code from one person. Nothing waits on a handoff.</p></div>
+          </li>
+          <li>
+            <svg class="ic" aria-hidden="true"><use href="#i-page"/></svg>
+            <div><h3>Paperwork is ready.</h3><p>MSA, rate card, and terms ready to send. You can have this signed today.</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- THE BAND — the one big background image -->
+      <figure class="band" role="img" aria-label="Photograph placeholder: a wide, dark, atmospheric image behind the claim">
+        <p class="band-note">Image 01 — the background band. One wide, dark, atmospheric photograph: screens at night, a wall of printed flows, a window at dusk, the city. It sits under a solid ground at partial opacity, so an ordinary photograph still reads as a deliberate crop and the type never depends on it. 2400 × 1200, focal point upper right.</p>
+        <p class="band-claim">I make complexity feel invisible.</p>
+        <p class="band-sub">Products where being wrong has consequences — patient data, money movement, audit requirements, systems people depend on.</p>
+      </figure>
+
+      <!-- 3 · HOW WORKING TOGETHER GOES -->
+      <section aria-labelledby="h-how">
+        <div class="sec-head">
+          <h2 id="h-how">Your name on the work. Mine on the invoice.</h2>
+        </div>
+        <ul class="terms">
+          <li>Your brand, your deck, your client relationship. I'm happy to be invisible.</li>
+          <li>Or client-facing when it helps — I've run demos that drove <span class="tnum">$15M</span> into a sales pipeline.</li>
+          <li>No account manager, no relay, no junior doing the work. You get the person you hired.</li>
+          <li>Registered business, own MSA and contracts, invoices from a legal entity.</li>
+          <li>Toronto-based. Your timezone, your currency.</li>
+        </ul>
+
+        <div class="person">
+          <figure class="plate plate--portrait">
+            <figcaption class="plate-tag">Image 02 — portrait<br>1200 × 1500</figcaption>
+          </figure>
+          <div>
+            <span class="nm">Victoria Panacci</span>
+            <p>The person you hire is the person who does the work. Nine years in-house on products where being wrong has consequences.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · WAYS TO WORK -->
+      <section aria-labelledby="h-ways">
+        <div class="sec-head">
+          <span class="lbl">Ways to work</span>
+          <h2 id="h-ways">Three fixed shapes, not an hourly menu.</h2>
+        </div>
+        <div class="ways">
+          <article class="way">
+            <h3>Pitch Sprint</h3>
+            <span class="price tnum">$3,000–5,000</span>
+            <span class="lbl dur">3–5 days</span>
+            <p>You're pitching; walk into the room with working software instead of static comps.</p>
+          </article>
+          <article class="way">
+            <h3>Embedded Senior</h3>
+            <span class="price tnum">$1,000/day</span>
+            <span class="lbl dur">2–3 days/week · 4-week min.</span>
+            <p>Senior capacity with no ramp and no onboarding cost.</p>
+          </article>
+          <article class="way">
+            <h3>Evidence Engagement</h3>
+            <span class="price tnum">from $1,000/day</span>
+            <span class="lbl dur">Scoped per engagement</span>
+            <p>Instrumentation, research, and a written read on what the product is actually doing.</p>
+          </article>
+        </div>
+        <p style="margin-top:24px"><a class="link" href="#rates">Full rate card and terms <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </section>
+
+      <!-- 5 · PROOF -->
+      <section aria-labelledby="h-proof">
+        <div class="sec-head">
+          <span class="lbl">Proof</span>
+          <h2 id="h-proof">The numbers, since you've read this far.</h2>
+        </div>
+        <div class="proof">
+          <div class="pf"><span class="fig tnum">$15M</span><p>Driven into sales pipeline through product demos and client communication.</p></div>
+          <div class="pf"><span class="fig tnum">~50%</span><p>Reduction in manual review effort — a first-of-its-kind DICOM redaction workflow inside FDA-regulated software.</p></div>
+          <div class="pf"><span class="fig">Systems</span><p>Design systems that let non-designers prototype independently.</p></div>
+          <div class="pf"><span class="fig tnum">9 yrs</span><p>In-house, on complex product work, since 2017.</p></div>
+        </div>
+        <p class="aside-line">Ran an independent practice, 2019–2022 — 15+ early-stage clients.</p>
+      </section>
+
+      <!-- 6 · SELECTED WORK -->
+      <section aria-labelledby="h-work">
+        <div class="sec-head">
+          <span class="lbl">Selected work</span>
+          <h2 id="h-work">Four pieces where the hard part wasn't the interface.</h2>
+        </div>
+        <div class="works">
+          <a class="work" href="https://victoriapanacci.ca">
+            <figure class="plate plate--thumb"><figcaption class="plate-tag">Image 03 · 1200 × 800</figcaption></figure>
+            <div>
+              <h3>DICOM redaction inside FDA-regulated trial software</h3>
+              <p>Audit requirements, clinical SMEs, and imaging data that cannot be wrong. <span class="out">Manual review effort down roughly half.</span></p>
+            </div>
+            <svg class="go" aria-hidden="true"><use href="#i-out"/></svg>
+          </a>
+          <a class="work" href="https://victoriapanacci.ca">
+            <figure class="plate plate--thumb"><figcaption class="plate-tag">Image 04 · 1200 × 800</figcaption></figure>
+            <div>
+              <h3>Medical imaging review for clinical specialists</h3>
+              <p>Dense diagnostic data, an expert audience, and no room for a wrong default. <span class="out">Designed with clinical SMEs inside a regulated product.</span></p>
+            </div>
+            <svg class="go" aria-hidden="true"><use href="#i-out"/></svg>
+          </a>
+          <a class="work" href="https://victoriapanacci.ca">
+            <figure class="plate plate--thumb"><figcaption class="plate-tag">Image 05 · 1200 × 800</figcaption></figure>
+            <div>
+              <h3>Cashier and deposit flows for a transactional product</h3>
+              <p>Money movement, account systems, and trust at the exact moment a user decides to stop. <span class="out">Conversion-critical work in a high-stakes context.</span></p>
+            </div>
+            <svg class="go" aria-hidden="true"><use href="#i-out"/></svg>
+          </a>
+          <a class="work" href="https://victoriapanacci.ca">
+            <figure class="plate plate--thumb"><figcaption class="plate-tag">Image 06 · 1200 × 800</figcaption></figure>
+            <div>
+              <h3>A design system non-designers could build in</h3>
+              <p>Components, documentation, and enough guardrails to be safe in other hands. <span class="out">Product managers prototyping without a designer in the room.</span></p>
+            </div>
+            <svg class="go" aria-hidden="true"><use href="#i-out"/></svg>
+          </a>
+        </div>
+        <p style="margin-top:22px"><a class="link" href="https://victoriapanacci.ca">Full case studies at victoriapanacci.ca <svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
+      </section>
+
+      <!-- 7 · BOOK -->
+      <section id="book" aria-labelledby="h-book">
+        <div class="sec-head">
+          <h2 id="h-book">Twenty minutes is enough to know.</h2>
+        </div>
+        <div class="book-grid">
+          <div><span class="lbl">Availability</span><div class="v"><span class="status"><span class="dot"></span>Available now</span></div></div>
+          <div><span class="lbl">Next opening</span><div class="v">Immediate</div></div>
+          <div><span class="lbl">Day rate</span><div class="v tnum">$1,000</div></div>
+          <div><span class="lbl">Response time</span><div class="v"><span class="fill">same business day?</span></div></div>
+        </div>
+        <div class="book-actions">
+          <a class="btn" href="#">Book 20 minutes <span class="fill">cal link</span></a>
+          <a class="link" href="mailto:victoria@panacci.design">victoria@panacci.design <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- STICKY FACTS RAIL — desktop only; becomes the bottom bar on mobile -->
+  <aside class="rail" aria-label="Availability and rate">
+    <div class="rail-item">
+      <span class="lbl">Status</span>
+      <span class="v"><span class="status"><span class="dot"></span>Available now</span></span>
+    </div>
+    <hr class="hair">
+    <div class="rail-item">
+      <span class="lbl">Day rate</span>
+      <span class="rate tnum">$1,000</span>
+      <span style="font-size:14.5px">per day · four-week minimum</span>
+    </div>
+    <hr class="hair">
+    <div class="rail-item">
+      <span class="lbl">Next opening</span>
+      <span class="v">Immediate</span>
+    </div>
+    <div class="rail-item">
+      <span class="lbl">Based</span>
+      <span class="v">Toronto — your timezone</span>
+    </div>
+    <a class="btn" href="#book">Book 20 minutes <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="link" href="mailto:victoria@panacci.design" style="font-size:14.5px">victoria@panacci.design</a>
+  </aside>
+</div>
+
+<!-- SUBPAGE SKETCH · /rates -->
+<section class="subpage" id="rates" aria-labelledby="h-rates">
+  <div class="subpage-inner">
+    <span class="lbl">Subpage · panacci.design/rates · prints to PDF</span>
+    <h2 id="h-rates" style="margin-top:14px">Rate card and engagement terms</h2>
+    <p class="copy" style="margin-top:14px">Panacci is the practice of Victoria Panacci, operating as Victoria Panacci Designs, Toronto, Ontario. This page is current as of <span class="tnum">August 2026</span> and is safe to forward to procurement.</p>
+
+    <table class="rate-table">
+      <thead><tr><th scope="col">Shape</th><th scope="col">Commitment</th><th scope="col">Rate</th><th scope="col">Best for</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">Pitch Sprint</th>
+          <td data-l="Commitment">3–5 consecutive days</td>
+          <td class="num tnum" data-l="Rate">$3,000–5,000</td>
+          <td data-l="Best for">Walking into a pitch with working software.</td>
+        </tr>
+        <tr>
+          <th scope="row">Embedded Senior</th>
+          <td data-l="Commitment">2–3 days/week, four-week minimum</td>
+          <td class="num tnum" data-l="Rate">$1,000/day</td>
+          <td data-l="Best for">Senior capacity with no ramp or onboarding cost.</td>
+        </tr>
+        <tr>
+          <th scope="row">Evidence Engagement</th>
+          <td data-l="Commitment">Scoped per engagement</td>
+          <td class="num tnum" data-l="Rate">from $1,000/day</td>
+          <td data-l="Best for">A written read on what the product is actually doing.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-up">
+      <div>
+        <span class="lbl">Included</span>
+        <ul>
+          <li>Design, prototyping, and shipped front-end code</li>
+          <li>Work delivered inside your design system and repo</li>
+          <li>A written decision log at the close of each engagement</li>
+          <li>White-label delivery, or client-facing when it helps</li>
+          <li>My own MSA, or yours reviewed and countersigned</li>
+        </ul>
+      </div>
+      <div>
+        <span class="lbl">Not included</span>
+        <ul>
+          <li>Account management or status meetings beyond a weekly check-in</li>
+          <li>Ongoing maintenance after the engagement closes</li>
+          <li>Third-party licences, research incentives, or travel</li>
+          <li><span class="fill">anything else you want ruled out</span></li>
+        </ul>
+      </div>
+      <div>
+        <span class="lbl">Terms</span>
+        <ul>
+          <li>Payment terms: <span class="fill">net 15?</span></li>
+          <li>Deposit: <span class="fill">50% to book a sprint?</span></li>
+          <li>Cancellation / rescheduling: <span class="fill">to confirm</span></li>
+          <li>Currency: <span class="fill">USD or CAD</span></li>
+          <li>IP assignment on final payment: <span class="fill">to confirm</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-legal">
+      <p>Victoria Panacci Designs · 2026 · Toronto, Ontario</p>
+      <p><a class="link" href="https://victoriapanacci.ca" style="font-size:14.5px">victoriapanacci.ca</a> · <a href="mailto:victoria@panacci.design" style="color:var(--green)">victoria@panacci.design</a></p>
+    </div>
+    <div class="mordecai">
+      <figure class="plate plate--sq" style="padding:8px">
+        <figcaption class="plate-tag">Image 07<br>Mordecai<br>800 × 800</figcaption>
+      </figure>
+      <p><span class="nm">Mordecai <svg style="width:15px;height:15px;vertical-align:-2px;color:var(--mute)" aria-hidden="true"><use href="#i-cat"/></svg></span>
+      Has tenure. Has never once made a deadline.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- mobile action bar: the rail, reduced to the two facts that decide it -->
+<div class="actionbar" id="actionbar">
+  <div class="ab-facts">
+    <span class="status"><span class="dot"></span>Available now</span>
+    <span class="ab-rate tnum">$1,000<span style="font-size:13px;font-family:'Public Sans',sans-serif;color:var(--mute)">/day</span></span>
+  </div>
+  <a class="btn" href="#book">Book 20 minutes</a>
+</div>
+
+<script>
+/* Tuck the mobile action bar away once the Book section is on screen,
+   so it never covers the very thing it points at. */
+(function(){
+  var bar = document.getElementById('actionbar');
+  var book = document.getElementById('book');
+  if(!bar || !book || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(entries){
+    bar.dataset.tucked = entries[0].isIntersecting ? 'true' : 'false';
+  },{threshold:0.25}).observe(book);
+})();
+</script>
