@@ -16,8 +16,9 @@ not been started.
 |---|---|
 | Direction | **Rule & Rail** — sticky facts rail, Fraunces 300 + Public Sans |
 | Prototype | [`index.html`](index.html) |
-| Alternate considered | [`explorations/graphite-slab.html`](explorations/graphite-slab.html) |
-| Full exploration | [`explorations/twenty-directions.html`](explorations/twenty-directions.html) |
+
+Rule & Rail is the only direction. The alternates explored before it were
+dropped and are not part of this repo.
 
 ## What the prototype establishes
 
