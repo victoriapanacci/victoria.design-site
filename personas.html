@@ -1,0 +1,624 @@
+<title>Six Victorias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@300;400;600&display=swap">
+
+<style>
+/* ============================================================
+   SIX VICTORIAS — persona deck hero
+   Structure borrowed from Emergent's "Wingman can be your"
+   carousel; palette and type are Panacci's own.
+   ============================================================ */
+
+:root{
+  --page:#FBFAF8;
+  --page-2:#F4F2ED;
+  --ink:#1A1B1D;
+  --body:#4A4C4A;
+  --mute:#8A887F;
+  --hair:#E5E3DB;
+  --rule:#D5D2C9;
+  --green:#2E4A3F;
+  --green-dk:#22382E;
+
+  /* stage — committed dark in both themes, like a photograph */
+  --stage-0:#0C1512;
+  --stage-1:#1B342B;
+  --stage-2:#2E4A3F;
+  --stage-glow:#47836E;
+  --stage-ink:#F4F3EE;
+  --stage-mute:rgba(244,243,238,.62);
+  --glass:rgba(255,255,255,.09);
+  --glass-line:rgba(255,255,255,.17);
+
+  --card:#FBFAF8;
+  --card-ink:#1A1B1D;
+  --card-body:#5A5C58;
+  --card-hair:#E6E3DA;
+  --chip-bg:#F1EFE9;
+  --chip-ink:#5F625B;
+  --chip-line:#E3E0D7;
+
+  --gutter:clamp(18px,4.4vw,56px);
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --page:#0F1210;
+    --page-2:#161A17;
+    --ink:#EDECE6;
+    --body:#A8A9A2;
+    --mute:#87887F;
+    --hair:#252A26;
+    --rule:#2F352F;
+    --green:#7FB39C;
+    --green-dk:#93C4AE;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#0F1210;
+  --page-2:#161A17;
+  --ink:#EDECE6;
+  --body:#A8A9A2;
+  --mute:#87887F;
+  --hair:#252A26;
+  --rule:#2F352F;
+  --green:#7FB39C;
+  --green-dk:#93C4AE;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--body);
+  font-family:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  font-weight:300;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance;font-weight:400}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:2px}
+
+.lbl{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:400;
+  font-size:11px;letter-spacing:.19em;text-transform:uppercase;
+}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+
+/* ---------- masthead ---------- */
+.masthead{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:clamp(20px,3vw,34px) 0 clamp(16px,2.4vw,24px);
+}
+.wordmark{
+  font-family:"Fraunces",Georgia,serif;font-weight:400;
+  font-variation-settings:"opsz" 24;
+  font-size:22px;letter-spacing:-.01em;color:var(--ink);
+}
+.masthead .lbl{color:var(--mute)}
+
+/* ---------- stage ---------- */
+.stage{
+  position:relative;
+  border-radius:28px;
+  overflow:hidden;
+  isolation:isolate;
+  padding:clamp(38px,5.4vw,68px) clamp(18px,4vw,54px) clamp(34px,4.4vw,54px);
+  background:
+    radial-gradient(120% 90% at 78% 8%,  var(--stage-glow) 0%, transparent 58%),
+    radial-gradient(96% 80% at 12% 96%,  #1F5C49 0%, transparent 62%),
+    linear-gradient(168deg, var(--stage-1) 0%, var(--stage-2) 42%, var(--stage-0) 100%);
+  color:var(--stage-ink);
+}
+/* slow ambient drift of the blooms */
+.stage::before{
+  content:"";position:absolute;inset:-24%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(38% 42% at 30% 26%, rgba(143,211,182,.30) 0%, transparent 66%),
+    radial-gradient(34% 38% at 74% 70%, rgba(71,131,110,.42) 0%, transparent 68%);
+  animation:drift 26s ease-in-out infinite alternate;
+}
+/* fine grain so the gradient does not band */
+.stage::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  opacity:.5;mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.5) .5px, transparent .5px);
+  background-size:3px 3px;
+}
+@keyframes drift{
+  from{transform:translate3d(-2.5%,-1.5%,0) scale(1)}
+  to  {transform:translate3d(3%,2.5%,0) scale(1.08)}
+}
+
+.stage-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+
+/* ---------- floating tool tiles ---------- */
+.tiles{position:absolute;inset:0;z-index:1;pointer-events:none}
+.tile{
+  position:absolute;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:9px 13px;border-radius:13px;
+  background:var(--glass);
+  border:1px solid var(--glass-line);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;font-weight:500;letter-spacing:.08em;
+  color:rgba(244,243,238,.86);
+  white-space:nowrap;
+  animation:bob 9s ease-in-out infinite alternate;
+  box-shadow:0 8px 24px rgba(6,18,14,.22);
+}
+@keyframes bob{
+  from{transform:translateY(-7px) rotate(var(--r,0deg))}
+  to  {transform:translateY(7px)  rotate(var(--r,0deg))}
+}
+.t1{top:6%;left:3%;--r:-7deg;animation-delay:-.4s}
+.t2{top:19%;left:12.5%;--r:5deg;animation-delay:-2.6s}
+.t3{top:31%;left:2%;--r:4deg;animation-delay:-1.3s}
+.t4{bottom:9%;left:5%;--r:-5deg;animation-delay:-3.4s}
+.t5{top:7%;right:4%;--r:6deg;animation-delay:-1.9s}
+.t6{top:20%;right:13%;--r:-4deg;animation-delay:-3.9s}
+.t7{top:32%;right:2.5%;--r:-6deg;animation-delay:-.9s}
+.t8{bottom:10%;right:5%;--r:5deg;animation-delay:-2.2s}
+
+/* ---------- headline ---------- */
+.eyebrow{
+  color:rgba(244,243,238,.66);
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 14px;border-radius:999px;
+  background:var(--glass);border:1px solid var(--glass-line);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+}
+.dot{width:6px;height:6px;border-radius:50%;background:#8FD3B6;flex:none}
+
+h1{
+  font-family:"Fraunces",Georgia,serif;font-weight:300;
+  font-variation-settings:"opsz" 120;
+  font-size:clamp(30px,5.1vw,54px);
+  line-height:1.08;letter-spacing:-.024em;
+  color:var(--stage-ink);
+  text-align:center;
+  margin:clamp(18px,2.4vw,26px) 0 0;
+  max-width:18ch;
+}
+.role{
+  display:inline-block;
+  color:#A9E3C6;
+  font-weight:400;
+}
+.role.swap{animation:swapin .42s cubic-bezier(.22,.9,.3,1)}
+@keyframes swapin{
+  from{opacity:0;transform:translateY(.28em)}
+  to  {opacity:1;transform:none}
+}
+
+/* ---------- deck ---------- */
+.deck{
+  position:relative;
+  width:100%;
+  height:392px;
+  margin-top:clamp(26px,3.4vw,40px);
+  perspective:1200px;
+}
+.card{
+  position:absolute;left:50%;top:50%;
+  width:272px;height:206px;
+  transform:translate(-50%,-50%) translateX(var(--x,0px)) scale(var(--s,1));
+  transform-origin:center;
+  transition:transform .52s cubic-bezier(.22,.9,.3,1),
+             height .52s cubic-bezier(.22,.9,.3,1),
+             background .42s ease,
+             opacity .42s ease;
+  background:rgba(251,250,248,var(--fill,1));
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  color:var(--card-body);
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:0 18px 44px rgba(6,18,14,.28);
+  padding:26px 22px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;
+  text-align:center;
+  cursor:pointer;
+  font:inherit;
+  overflow:hidden;
+}
+.card.is-active{
+  height:356px;
+  cursor:default;
+  background:var(--card);
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-color:rgba(255,255,255,.7);
+  box-shadow:0 28px 68px rgba(6,18,14,.42);
+}
+.card.is-gone{pointer-events:none}
+
+.badge{
+  width:56px;height:56px;border-radius:17px;flex:none;
+  display:grid;place-items:center;
+  background:var(--bg);color:var(--fg);
+  transition:width .4s ease,height .4s ease;
+}
+.badge svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.card.is-active .badge{width:64px;height:64px}
+
+.card h3{
+  font-family:"Fraunces",Georgia,serif;font-weight:400;
+  font-variation-settings:"opsz" 36;
+  font-size:20px;line-height:1.2;letter-spacing:-.012em;
+  color:var(--card-ink);
+}
+.card-detail{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .5s cubic-bezier(.22,.9,.3,1),opacity .3s ease;
+}
+.card.is-active .card-detail{max-height:200px;opacity:1;transition-delay:.06s}
+.card-detail p{font-size:14.5px;line-height:1.5;max-width:26ch;color:var(--card-body)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.03em;
+  padding:5px 9px;border-radius:999px;
+  background:var(--chip-bg);color:var(--chip-ink);
+  border:1px solid var(--chip-line);
+  white-space:nowrap;
+}
+
+/* ---------- controls ---------- */
+.controls{display:flex;align-items:center;gap:16px;margin-top:clamp(4px,1.4vw,12px)}
+.arrow{
+  width:34px;height:34px;border-radius:50%;flex:none;
+  display:grid;place-items:center;
+  background:var(--glass);border:1px solid var(--glass-line);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  color:var(--stage-ink);cursor:pointer;
+  transition:background .18s ease;
+}
+.arrow:hover{background:rgba(255,255,255,.2)}
+.arrow svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.dots{display:flex;align-items:center;gap:7px}
+.pip{
+  width:7px;height:7px;border-radius:999px;padding:0;
+  background:rgba(255,255,255,.34);border:0;cursor:pointer;
+  transition:width .3s ease,background .3s ease;
+}
+.pip.on{width:26px;background:#A9E3C6}
+
+.cta{
+  display:inline-flex;align-items:center;gap:11px;
+  margin-top:clamp(24px,3vw,34px);
+  background:#14201B;color:#F4F3EE;text-decoration:none;
+  font-size:15.5px;letter-spacing:.01em;
+  padding:15px 26px;border-radius:999px;min-height:50px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 14px 34px rgba(6,18,14,.34);
+  transition:background .18s ease,transform .18s ease;
+}
+.cta:hover{background:#0A120F;transform:translateY(-1px)}
+.cta svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- week one ---------- */
+.weekone{
+  margin:clamp(34px,4.6vw,58px) 0 clamp(26px,3.4vw,48px);
+  display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);
+  gap:clamp(20px,3.4vw,52px);align-items:start;
+}
+.weekone-head .lbl{color:var(--mute);display:block;margin-bottom:12px}
+.weekone-head h2{
+  font-family:"Fraunces",Georgia,serif;font-weight:300;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(23px,2.8vw,31px);line-height:1.14;letter-spacing:-.02em;
+}
+.weekone ol{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:0;
+  border-top:1px solid var(--hair);
+}
+.weekone li{
+  padding:20px 22px 22px 0;
+  border-bottom:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:9px;
+}
+.weekone li .n{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.16em;color:var(--mute);
+  font-variant-numeric:tabular-nums;
+}
+.weekone li span.txt{font-size:16px;line-height:1.5;color:var(--ink);font-weight:300}
+
+.foot{
+  border-top:1px solid var(--hair);
+  padding:22px 0 46px;
+  display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;
+  color:var(--mute);
+}
+.foot .lbl{color:var(--mute)}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .weekone{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .t2,.t3,.t6,.t7{display:none}
+  .t1{left:1%;top:4%}
+  .t5{right:1%;top:4%}
+  .t4{left:1%;bottom:9%}
+  .t8{right:1%;bottom:9%}
+}
+@media (max-width:620px){
+  .stage{border-radius:22px}
+  .deck{height:344px}
+  .card{width:236px}
+  h1{max-width:14ch}
+}
+@media (max-width:420px){
+  .tile{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.001ms!important}
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <span class="wordmark">Panacci</span>
+    <span class="lbl">Toronto · Available now</span>
+  </header>
+</div>
+
+<div class="wrap">
+  <section class="stage" aria-labelledby="hd">
+
+    <div class="tiles" aria-hidden="true">
+      <span class="tile t1">Figma</span>
+      <span class="tile t2">React</span>
+      <span class="tile t3">Storybook</span>
+      <span class="tile t4">TypeScript</span>
+      <span class="tile t5">DICOM</span>
+      <span class="tile t6">Linear</span>
+      <span class="tile t7">Git</span>
+      <span class="tile t8">Confluence</span>
+    </div>
+
+    <div class="stage-inner">
+      <span class="eyebrow lbl"><span class="dot"></span>Six roles · one hire</span>
+
+      <h1 id="hd">Victoria can be your <span class="role" id="role">Product Designer</span></h1>
+
+      <div class="deck" id="deck" role="group"
+           aria-roledescription="carousel" aria-label="Superpowers"
+           tabindex="0"></div>
+
+      <div class="controls">
+        <button class="arrow" id="prev" aria-label="Previous superpower">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+        </button>
+        <div class="dots" id="dots"></div>
+        <button class="arrow" id="next" aria-label="Next superpower">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <a class="cta" href="mailto:victoria@panacci.design">
+        Book twenty minutes
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section class="weekone">
+    <div class="weekone-head">
+      <span class="lbl">What week one looks like</span>
+      <h2>As your <span id="w1role">Product Designer</span></h2>
+    </div>
+    <ol id="w1list" aria-live="polite"></ol>
+  </section>
+
+  <footer class="foot">
+    <span class="lbl">Victoria Panacci Designs · 2026</span>
+    <span class="lbl">victoria@panacci.design</span>
+  </footer>
+</div>
+
+<script>
+const NIB   = '<path d="M12 3l7.4 15.4L12 14.6 4.6 18.4z"/><path d="M12 14.6V21"/>';
+const LENS  = '<circle cx="10.6" cy="10.6" r="6.1"/><path d="M15.1 15.1L21 21"/>';
+const CODE  = '<path d="M8.6 7.6L3.8 12l4.8 4.4"/><path d="M15.4 7.6L20.2 12l-4.8 4.4"/><path d="M13.4 5.4l-2.8 13.2"/>';
+const GRID  = '<rect x="3.6" y="3.6" width="7" height="7" rx="2"/><rect x="13.4" y="3.6" width="7" height="7" rx="2"/><rect x="3.6" y="13.4" width="7" height="7" rx="2"/><rect x="13.4" y="13.4" width="7" height="7" rx="2"/>';
+const CAST  = '<circle cx="12" cy="12" r="2.1"/><path d="M8.1 8.1a5.5 5.5 0 000 7.8"/><path d="M15.9 8.1a5.5 5.5 0 010 7.8"/><path d="M5.2 5.2a9.6 9.6 0 000 13.6"/><path d="M18.8 5.2a9.6 9.6 0 010 13.6"/>';
+const PAW   = '<ellipse cx="6.9" cy="10.4" rx="1.9" ry="2.5"/><ellipse cx="10.4" cy="7.6" rx="2" ry="2.7"/><ellipse cx="14.2" cy="7.8" rx="2" ry="2.7"/><ellipse cx="17.4" cy="10.8" rx="1.9" ry="2.4"/><path d="M12.2 13.2c2.5 0 4.5 1.7 4.5 3.7 0 1.7-1.4 2.7-3.2 2.7h-2.6c-1.8 0-3.2-1-3.2-2.7 0-2 2-3.7 4.5-3.7z"/>';
+
+const PERSONAS = [
+  {
+    name:"Product Designer", short:"Product Designer",
+    glyph:NIB, bg:"#E3EBE5", fg:"#2E4A3F",
+    line:"Reads the messy Confluence page and hands back a decision.",
+    chips:["#ComplexFlows","#Regulated","#NineYearsInHouse"],
+    week:["Read everything nobody has opened in a year",
+          "Name the three decisions blocking the build",
+          "Ship the first screen, inside your system"]
+  },
+  {
+    name:"Researcher", short:"Researcher",
+    glyph:LENS, bg:"#E1E8EC", fg:"#2C4652",
+    line:"Instruments the product and writes down what it is actually doing.",
+    chips:["#ClinicalSMEs","#Instrumentation","#EvidenceNotOpinion"],
+    week:["Sit with the specialists who use it daily",
+          "Put measurement on the paths that matter",
+          "One written read — no deck required"]
+  },
+  {
+    name:"Design Engineer", short:"Design Engineer",
+    glyph:CODE, bg:"#E7E7DE", fg:"#4A4E32",
+    line:"Ships the front-end too, so nothing waits on a handoff.",
+    chips:["#React","#TypeScript","#InYourRepo"],
+    week:["Clone the repo, open a PR by Thursday",
+          "Build the component instead of speccing it",
+          "Leave code the next person can read"]
+  },
+  {
+    name:"Systems Architect", short:"Systems Architect",
+    glyph:GRID, bg:"#DFE9E6", fg:"#26453C",
+    line:"Builds the kit so PMs can prototype without a designer in the room.",
+    chips:["#Components","#Guardrails","#Documentation"],
+    week:["Inventory what already exists, twice over",
+          "Write the rules that stop the drift",
+          "Teach one non-designer to build with it"]
+  },
+  {
+    name:"Closer", short:"Closer",
+    glyph:CAST, bg:"#F0E3CE", fg:"#6B4A1E",
+    line:"Runs the demo when the room needs convincing. $15M of pipeline says it works.",
+    chips:["#LiveDemos","#ClientFacing","#PipelineDriven"],
+    week:["Learn the product well enough to go off-script",
+          "Build the demo that survives a hard question",
+          "Walk in with working software, not comps"]
+  },
+  {
+    name:"Mordecai's Chief of Staff", short:"Chief of Staff",
+    glyph:PAW, bg:"#F1E2D9", fg:"#6E4332",
+    line:"Has tenure. Has never once made a deadline.",
+    chips:["#OfficeDog","#MoraleOps","#ZeroDeadlinesMet"],
+    week:["Attend every standup, contribute nothing",
+          "Escalate all matters to the couch",
+          "Remain, somehow, unfireable"]
+  }
+];
+
+const N      = PERSONAS.length;
+const HALF   = Math.floor(N / 2);
+const deck   = document.getElementById('deck');
+const dots   = document.getElementById('dots');
+const roleEl = document.getElementById('role');
+const w1role = document.getElementById('w1role');
+const w1list = document.getElementById('w1list');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let active = 0;
+
+/* --- build cards --- */
+PERSONAS.forEach((p, i) => {
+  const c = document.createElement('button');
+  c.type = 'button';
+  c.className = 'card';
+  c.setAttribute('aria-label', p.name);
+  c.innerHTML =
+    '<span class="badge" style="--bg:' + p.bg + ';--fg:' + p.fg + '">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' + p.glyph + '</svg>' +
+    '</span>' +
+    '<h3>' + p.name + '</h3>' +
+    '<span class="card-detail">' +
+      '<p>' + p.line + '</p>' +
+      '<span class="chips">' +
+        p.chips.map(t => '<span class="chip">' + t + '</span>').join('') +
+      '</span>' +
+    '</span>';
+  c.addEventListener('click', () => { stop(); go(i); });
+  deck.appendChild(c);
+});
+const cards = Array.from(deck.children);
+
+/* --- build dots --- */
+PERSONAS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'pip';
+  b.type = 'button';
+  b.setAttribute('aria-label', 'Show ' + p.name);
+  b.addEventListener('click', () => { stop(); go(i); });
+  dots.appendChild(b);
+});
+const pips = Array.from(dots.children);
+
+function geometry(){
+  const w = window.innerWidth;
+  if (w < 620)  return {x1:150, x2:220, s1:.74, s2:.60, f1:0,   f2:0};
+  if (w < 980)  return {x1:200, x2:334, s1:.83, s2:.68, f1:.72, f2:.42};
+  return          {x1:250, x2:408, s1:.85, s2:.71, f1:.74, f2:.46};
+}
+
+function layout(){
+  const g = geometry();
+  cards.forEach((c, i) => {
+    let d = (((i - active + HALF) % N) + N) % N - HALF;
+    const ad = Math.abs(d), dir = Math.sign(d);
+    let x = 0, s = 1, f = 1, o = 1, z = 30;
+    if (ad === 1)       { x = dir * g.x1; s = g.s1; f = g.f1; z = 20; o = g.f1 ? 1 : 0; }
+    else if (ad === 2)  { x = dir * g.x2; s = g.s2; f = g.f2; z = 10; o = g.f2 ? 1 : 0; }
+    else if (ad >= 3)   { x = 0;          s = g.s2; f = 0;    z = 1; o = 0; }
+    c.style.setProperty('--x', x + 'px');
+    c.style.setProperty('--s', s);
+    c.style.setProperty('--fill', f);
+    c.style.opacity = o;
+    c.style.zIndex = z;
+    c.classList.toggle('is-active', d === 0);
+    c.classList.toggle('is-gone', o === 0);
+    c.tabIndex = d === 0 ? 0 : -1;
+  });
+}
+
+function paint(){
+  const p = PERSONAS[active];
+  roleEl.textContent = p.name;
+  roleEl.classList.remove('swap');
+  void roleEl.offsetWidth;
+  if (!reduced) roleEl.classList.add('swap');
+
+  w1role.textContent = p.short;
+  w1list.innerHTML = p.week.map((t, i) =>
+    '<li><span class="n">Day ' + (i * 2 + 1) + '</span>' +
+    '<span class="txt">' + t + '</span></li>').join('');
+
+  pips.forEach((b, i) => {
+    b.classList.toggle('on', i === active);
+    b.setAttribute('aria-current', i === active ? 'true' : 'false');
+  });
+}
+
+function go(i){
+  active = ((i % N) + N) % N;
+  layout();
+  paint();
+}
+
+document.getElementById('prev').addEventListener('click', () => { stop(); go(active - 1); });
+document.getElementById('next').addEventListener('click', () => { stop(); go(active + 1); });
+
+deck.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft')  { stop(); go(active - 1); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { stop(); go(active + 1); e.preventDefault(); }
+});
+
+/* --- gentle autoplay, stops the moment anyone touches it --- */
+let timer = null;
+function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+function start(){
+  if (reduced || timer) return;
+  timer = setInterval(() => go(active + 1), 5200);
+}
+['pointerdown','focusin'].forEach(ev => deck.addEventListener(ev, stop));
+deck.addEventListener('pointerenter', stop);
+
+addEventListener('resize', layout);
+
+go(0);
+start();
+</script>
