@@ -20,11 +20,23 @@ const families = [
    'The structure itself is the proof that you build, not just draw.']
 ];
 
+
+// Frame heights: generous slack so nothing clips. Root min-height matches the
+// frame, so surplus paints the artboard's own background rather than the canvas.
+const FRAME_H = {
+  C01Dossier: 2520, C02Index: 2240, C03Card: 1140, C04Split: 2020,
+  C05Ledger: 2180, C06Marquee: 2340, C07Tabs: 1080, C08Timeline: 2420,
+  C09Brief: 2520, C10Gallery: 2420, C11Spec: 2120, C12Questions: 2700,
+  C13ThreeDoors: 1940, C14Console: 1840, C15Editorial: 2340, C16Poster: 1900,
+  C17Stack: 2680, C18BookFirst: 1900, C19Mosaic: 1770, C20Reduction: 1460
+};
+for (const c of all) if (FRAME_H[c.id]) c.h = FRAME_H[c.id];
+
 const byId = Object.fromEntries(all.map(c => [c.id, c]));
 const num = Object.fromEntries(all.map((c, i) => [c.id, String(i + 1).padStart(2, '0')]));
 
 // ---------------- Main: the legend ----------------
-const mainW = 1240, mainH = 1560;
+const mainW = 1240, mainH = 2260;
 const mainHtml = `
 <div style="padding:52px 56px;display:flex;flex-direction:column;gap:34px;flex:1">
   <header style="display:flex;flex-direction:column;gap:12px;padding-bottom:22px;border-bottom:2px solid ${P.ink}">

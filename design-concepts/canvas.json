@@ -6,174 +6,174 @@
       "x": 0,
       "y": 0,
       "w": 1240,
-      "h": 1560
+      "h": 2260
     },
     {
       "file": "C01Dossier.dc.html",
       "title": "01 · Dossier",
       "x": 0,
-      "y": 1880,
+      "y": 2580,
       "w": 1440,
-      "h": 2100
+      "h": 2520
     },
     {
       "file": "C02Index.dc.html",
       "title": "02 · Index",
       "x": 1610,
-      "y": 1880,
+      "y": 2580,
       "w": 1440,
-      "h": 1900
+      "h": 2240
     },
     {
       "file": "C03Card.dc.html",
       "title": "03 · Calling Card",
       "x": 3220,
-      "y": 1880,
+      "y": 2580,
       "w": 1440,
-      "h": 1000
+      "h": 1140
     },
     {
       "file": "C04Split.dc.html",
       "title": "04 · Split Screen",
       "x": 4830,
-      "y": 1880,
+      "y": 2580,
       "w": 1440,
-      "h": 1650
+      "h": 2020
     },
     {
       "file": "C05Ledger.dc.html",
       "title": "05 · Ledger",
       "x": 6440,
-      "y": 1880,
+      "y": 2580,
       "w": 1440,
-      "h": 1750
+      "h": 2180
     },
     {
       "file": "C06Marquee.dc.html",
       "title": "06 · Marquee",
       "x": 0,
-      "y": 4220,
+      "y": 5340,
       "w": 1440,
-      "h": 2000
+      "h": 2340
     },
     {
       "file": "C07Tabs.dc.html",
       "title": "07 · One Screen, Tabbed",
       "x": 1610,
-      "y": 4220,
+      "y": 5340,
       "w": 1440,
-      "h": 950
+      "h": 1080
     },
     {
       "file": "C08Timeline.dc.html",
       "title": "08 · Timeline",
       "x": 3220,
-      "y": 4220,
+      "y": 5340,
       "w": 1440,
-      "h": 1900
+      "h": 2420
     },
     {
       "file": "C09Brief.dc.html",
       "title": "09 · The Brief",
       "x": 4830,
-      "y": 4220,
+      "y": 5340,
       "w": 1440,
-      "h": 2000
+      "h": 2520
     },
     {
       "file": "C10Gallery.dc.html",
       "title": "10 · Gallery First",
       "x": 6440,
-      "y": 4220,
+      "y": 5340,
       "w": 1440,
-      "h": 1950
+      "h": 2420
     },
     {
       "file": "C11Spec.dc.html",
       "title": "11 · Spec Sheet",
       "x": 0,
-      "y": 6460,
+      "y": 8100,
       "w": 1440,
-      "h": 1700
+      "h": 2120
     },
     {
       "file": "C12Questions.dc.html",
       "title": "12 · Their Questions",
       "x": 1610,
-      "y": 6460,
+      "y": 8100,
       "w": 1440,
-      "h": 2050
+      "h": 2700
     },
     {
       "file": "C13ThreeDoors.dc.html",
       "title": "13 · Three Doors",
       "x": 3220,
-      "y": 6460,
+      "y": 8100,
       "w": 1440,
-      "h": 1600
+      "h": 1940
     },
     {
       "file": "C14Console.dc.html",
       "title": "14 · Console",
       "x": 4830,
-      "y": 6460,
+      "y": 8100,
       "w": 1440,
-      "h": 1500
+      "h": 1840
     },
     {
       "file": "C15Editorial.dc.html",
       "title": "15 · Editorial",
       "x": 6440,
-      "y": 6460,
+      "y": 8100,
       "w": 1440,
-      "h": 1900
+      "h": 2340
     },
     {
       "file": "C16Poster.dc.html",
       "title": "16 · Poster",
       "x": 0,
-      "y": 8750,
+      "y": 11040,
       "w": 1440,
-      "h": 1700
+      "h": 1900
     },
     {
       "file": "C17Stack.dc.html",
       "title": "17 · Stack",
       "x": 1610,
-      "y": 8750,
+      "y": 11040,
       "w": 1440,
-      "h": 2000
+      "h": 2680
     },
     {
       "file": "C18BookFirst.dc.html",
       "title": "18 · Book First",
       "x": 3220,
-      "y": 8750,
+      "y": 11040,
       "w": 1440,
-      "h": 1650
+      "h": 1900
     },
     {
       "file": "C19Mosaic.dc.html",
       "title": "19 · Mosaic",
       "x": 4830,
-      "y": 8750,
+      "y": 11040,
       "w": 1440,
-      "h": 1750
+      "h": 1770
     },
     {
       "file": "C20Reduction.dc.html",
       "title": "20 · Reduction",
       "x": 6440,
-      "y": 8750,
+      "y": 11040,
       "w": 1440,
-      "h": 1150
+      "h": 1460
     }
   ],
   "annotations": [
     {
       "id": "how-to-read",
       "x": 0,
-      "y": 1700,
+      "y": 2400,
       "w": 620,
       "text": "Read left to right. Rows group loosely by how much the reader has to scroll before they hit the rate and the booking action.\n\nEverything is at 1440px desktop width — say the word and I will draw the phone layout for whichever ones you shortlist."
     },

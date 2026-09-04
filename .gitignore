@@ -4,3 +4,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# Seeded design canvas (build output, ~2.7MB)
+design-concepts/panacci-structure-study.html
+design-concepts/measured.json
