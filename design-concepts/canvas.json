@@ -1,0 +1,191 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "00 · Start here — the twenty at a glance",
+      "x": 0,
+      "y": 0,
+      "w": 1240,
+      "h": 1560
+    },
+    {
+      "file": "C01Dossier.dc.html",
+      "title": "01 · Dossier",
+      "x": 0,
+      "y": 1880,
+      "w": 1440,
+      "h": 2100
+    },
+    {
+      "file": "C02Index.dc.html",
+      "title": "02 · Index",
+      "x": 1610,
+      "y": 1880,
+      "w": 1440,
+      "h": 1900
+    },
+    {
+      "file": "C03Card.dc.html",
+      "title": "03 · Calling Card",
+      "x": 3220,
+      "y": 1880,
+      "w": 1440,
+      "h": 1000
+    },
+    {
+      "file": "C04Split.dc.html",
+      "title": "04 · Split Screen",
+      "x": 4830,
+      "y": 1880,
+      "w": 1440,
+      "h": 1650
+    },
+    {
+      "file": "C05Ledger.dc.html",
+      "title": "05 · Ledger",
+      "x": 6440,
+      "y": 1880,
+      "w": 1440,
+      "h": 1750
+    },
+    {
+      "file": "C06Marquee.dc.html",
+      "title": "06 · Marquee",
+      "x": 0,
+      "y": 4220,
+      "w": 1440,
+      "h": 2000
+    },
+    {
+      "file": "C07Tabs.dc.html",
+      "title": "07 · One Screen, Tabbed",
+      "x": 1610,
+      "y": 4220,
+      "w": 1440,
+      "h": 950
+    },
+    {
+      "file": "C08Timeline.dc.html",
+      "title": "08 · Timeline",
+      "x": 3220,
+      "y": 4220,
+      "w": 1440,
+      "h": 1900
+    },
+    {
+      "file": "C09Brief.dc.html",
+      "title": "09 · The Brief",
+      "x": 4830,
+      "y": 4220,
+      "w": 1440,
+      "h": 2000
+    },
+    {
+      "file": "C10Gallery.dc.html",
+      "title": "10 · Gallery First",
+      "x": 6440,
+      "y": 4220,
+      "w": 1440,
+      "h": 1950
+    },
+    {
+      "file": "C11Spec.dc.html",
+      "title": "11 · Spec Sheet",
+      "x": 0,
+      "y": 6460,
+      "w": 1440,
+      "h": 1700
+    },
+    {
+      "file": "C12Questions.dc.html",
+      "title": "12 · Their Questions",
+      "x": 1610,
+      "y": 6460,
+      "w": 1440,
+      "h": 2050
+    },
+    {
+      "file": "C13ThreeDoors.dc.html",
+      "title": "13 · Three Doors",
+      "x": 3220,
+      "y": 6460,
+      "w": 1440,
+      "h": 1600
+    },
+    {
+      "file": "C14Console.dc.html",
+      "title": "14 · Console",
+      "x": 4830,
+      "y": 6460,
+      "w": 1440,
+      "h": 1500
+    },
+    {
+      "file": "C15Editorial.dc.html",
+      "title": "15 · Editorial",
+      "x": 6440,
+      "y": 6460,
+      "w": 1440,
+      "h": 1900
+    },
+    {
+      "file": "C16Poster.dc.html",
+      "title": "16 · Poster",
+      "x": 0,
+      "y": 8750,
+      "w": 1440,
+      "h": 1700
+    },
+    {
+      "file": "C17Stack.dc.html",
+      "title": "17 · Stack",
+      "x": 1610,
+      "y": 8750,
+      "w": 1440,
+      "h": 2000
+    },
+    {
+      "file": "C18BookFirst.dc.html",
+      "title": "18 · Book First",
+      "x": 3220,
+      "y": 8750,
+      "w": 1440,
+      "h": 1650
+    },
+    {
+      "file": "C19Mosaic.dc.html",
+      "title": "19 · Mosaic",
+      "x": 4830,
+      "y": 8750,
+      "w": 1440,
+      "h": 1750
+    },
+    {
+      "file": "C20Reduction.dc.html",
+      "title": "20 · Reduction",
+      "x": 6440,
+      "y": 8750,
+      "w": 1440,
+      "h": 1150
+    }
+  ],
+  "annotations": [
+    {
+      "id": "how-to-read",
+      "x": 0,
+      "y": 1700,
+      "w": 620,
+      "text": "Read left to right. Rows group loosely by how much the reader has to scroll before they hit the rate and the booking action.\n\nEverything is at 1440px desktop width — say the word and I will draw the phone layout for whichever ones you shortlist."
+    },
+    {
+      "id": "clunk-note",
+      "x": 1410,
+      "y": 0,
+      "w": 560,
+      "text": "What made the current site feel clunky, as far as I can tell:\n\n• Nine full-width bands of roughly equal weight, so nothing is clearly first.\n• The rail repeats facts the hero already stated.\n• Prose blocks where a list or a table would read faster.\n\nMost of these twenty fix at least one of those. 02, 05, 09 and 20 fix all three."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

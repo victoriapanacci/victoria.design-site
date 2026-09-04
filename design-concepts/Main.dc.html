@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #FBFAF8; color: #4A4C4A;
+      font-family: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { margin: 0; color: #1A1B1D; font-weight: 400; text-wrap: balance; }
+    h1, h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; line-height: 1.03; letter-spacing: -.01em; }
+    h1 { font-size: 64px; }
+    h2 { font-size: 34px; }
+    h3 { font-size: 17px; font-family: "Public Sans", sans-serif; font-weight: 600; line-height: 1.35; letter-spacing: -.005em; }
+    p { margin: 0; }
+    a { color: #2E4A3F; text-underline-offset: 3px; }
+    a:hover { color: #1A1B1D; }
+    .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+</style>
+</helmet>
+<div style="width:1240px;min-height:1560px;background:#FBFAF8;display:flex;flex-direction:column">
+
+<div style="padding:52px 56px;display:flex;flex-direction:column;gap:34px;flex:1">
+  <header style="display:flex;flex-direction:column;gap:12px;padding-bottom:22px;border-bottom:2px solid #1A1B1D">
+    <div class="mono" style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A887F">Structure study · 20 concepts</div>
+    <h1 style="font-size:46px;max-width:22ch">Twenty ways to structure Victoria Panacci&rsquo;s site.</h1>
+    <p style="font-size:17px;max-width:70ch">Same copy, same palette, same restraint as the current prototype. The only variable is <em>structure</em> &mdash; what the page is organised around, and what the reader meets first. Every image is a marked placeholder sized for your asset list.</p>
+  </header>
+
+  <div style="display:flex;flex-direction:column;gap:26px">
+    <section style="display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+        <h3 style="font-size:16px">Document-led</h3>
+        <p style="font-size:13px;color:#8A887F">The page behaves like a paper the reader already knows how to skim.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">01</span>
+            <span style="font-size:15px;color:#1A1B1D">Dossier</span>
+            <span style="font-size:13px;line-height:1.55">Fixed identity column · content reads as one document<span style="color:#8A887F"> &mdash; Reads senior and calm. Narrower content measure; the left column is dead weight on mobile.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">02</span>
+            <span style="font-size:15px;color:#1A1B1D">Index</span>
+            <span style="font-size:13px;line-height:1.55">The whole site is a table of contents<span style="color:#8A887F"> &mdash; Scannable in three seconds and very confident. Carries almost no persuasion — it assumes the reader already wants you.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">05</span>
+            <span style="font-size:15px;color:#1A1B1D">Ledger</span>
+            <span style="font-size:13px;line-height:1.55">Every section is a table — facts in columns, no prose blocks<span style="color:#8A887F"> &mdash; Unusually honest and very fast to compare. Cold; needs the portrait and one photograph to stay human.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">09</span>
+            <span style="font-size:15px;color:#1A1B1D">The Brief</span>
+            <span style="font-size:13px;line-height:1.55">Laid out like the document a producer would write themselves<span style="color:#8A887F"> &mdash; Speaks the reader&#39;s native format and answers procurement early. Looks like paperwork — least likely of the set to be shared for its craft.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">11</span>
+            <span style="font-size:15px;color:#1A1B1D">Spec Sheet</span>
+            <span style="font-size:13px;line-height:1.55">Monospace, dark, key–value pairs — reads like documentation<span style="color:#8A887F"> &mdash; Instantly signals the designer who also ships code. Narrow appeal: a brand-led producer may read it as cold or junior-engineer.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">20</span>
+            <span style="font-size:15px;color:#1A1B1D">Reduction</span>
+            <span style="font-size:13px;line-height:1.55">One screen of text. Nothing that is not load-bearing.<span style="color:#8A887F"> &mdash; The most self-assured thing you could ship, and impossible to build wrong. Gives images nowhere to live — it only works if the writing carries it.</span></span>
+          </div>
+      </div>
+    </section><section style="display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+        <h3 style="font-size:16px">Type-led</h3>
+        <p style="font-size:13px;color:#8A887F">Typography does the work; the reader is meant to feel your craft before reading a word.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">06</span>
+            <span style="font-size:15px;color:#1A1B1D">Marquee</span>
+            <span style="font-size:13px;line-height:1.55">Project names at poster scale carry the page<span style="color:#8A887F"> &mdash; Memorable and unmistakably a designer&#39;s site. Pushes rate and availability far down; weakest on the producer&#39;s practical questions.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">15</span>
+            <span style="font-size:15px;color:#1A1B1D">Editorial</span>
+            <span style="font-size:13px;line-height:1.55">Magazine spread — columns, a pull quote, the portrait as a feature<span style="color:#8A887F"> &mdash; The warmest and most personal option; good if you want to be hired as a person. Slowest to read, and columns are fragile on mobile.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">16</span>
+            <span style="font-size:15px;color:#1A1B1D">Poster</span>
+            <span style="font-size:13px;line-height:1.55">One full-height typographic statement, then everything else on one screen<span style="color:#8A887F"> &mdash; Enormous confidence and a screenshot people remember. Spends a whole viewport before saying anything useful.</span></span>
+          </div>
+      </div>
+    </section><section style="display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+        <h3 style="font-size:16px">Work-led</h3>
+        <p style="font-size:13px;color:#8A887F">The projects lead. These are the ones that live or die on the six photographs.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">10</span>
+            <span style="font-size:15px;color:#1A1B1D">Gallery First</span>
+            <span style="font-size:13px;line-height:1.55">Work fills the screen; words are captions and a thin persistent bar<span style="color:#8A887F"> &mdash; The strongest showcase of you as a designer — and the one that most depends on the six photographs being excellent.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">08</span>
+            <span style="font-size:15px;color:#1A1B1D">Timeline</span>
+            <span style="font-size:13px;line-height:1.55">One vertical spine, 2017 to now — work and depth hang off it<span style="color:#8A887F"> &mdash; Proves nine years without a paragraph claiming it. Chronology is your story, not the producer&#39;s question; availability has to be pinned separately.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">19</span>
+            <span style="font-size:15px;color:#1A1B1D">Mosaic</span>
+            <span style="font-size:13px;line-height:1.55">One grid — facts, work, portrait and rate are all tiles of equal citizenship<span style="color:#8A887F"> &mdash; Everything is visible at once and it reorders cleanly on mobile. No argument order; the reader assembles the case themselves.</span></span>
+          </div>
+      </div>
+    </section><section style="display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+        <h3 style="font-size:16px">Conversion-led</h3>
+        <p style="font-size:13px;color:#8A887F">Built around the producer’s decision, not your story.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">03</span>
+            <span style="font-size:15px;color:#1A1B1D">Calling Card</span>
+            <span style="font-size:13px;line-height:1.55">Everything that closes a deal, above the fold, no scroll<span style="color:#8A887F"> &mdash; Ruthlessly efficient for a producer with 40 seconds. Gives a design-led reader nothing to admire.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">12</span>
+            <span style="font-size:15px;color:#1A1B1D">Their Questions</span>
+            <span style="font-size:13px;line-height:1.55">Every heading is a question the producer is already asking<span style="color:#8A887F"> &mdash; The most persuasive structure here and the easiest to write. Repetitive at length; needs strict discipline on question count.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">13</span>
+            <span style="font-size:15px;color:#1A1B1D">Three Doors</span>
+            <span style="font-size:13px;line-height:1.55">The fold is a choice between three engagements, not a scroll<span style="color:#8A887F"> &mdash; Qualifies the lead and frames budget immediately. Asks the reader to self-select before they trust you — risky if they came in cold.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">18</span>
+            <span style="font-size:15px;color:#1A1B1D">Book First</span>
+            <span style="font-size:13px;line-height:1.55">The booking panel is the hero; every section below is evidence for it<span style="color:#8A887F"> &mdash; Highest conversion intent of the twenty. Presumptuous for a first-time visitor — works best when people arrive already referred.</span></span>
+          </div>
+      </div>
+    </section><section style="display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+        <h3 style="font-size:16px">App-led</h3>
+        <p style="font-size:13px;color:#8A887F">The structure itself is the proof that you build, not just draw.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">04</span>
+            <span style="font-size:15px;color:#1A1B1D">Split Screen</span>
+            <span style="font-size:13px;line-height:1.55">Pitch holds still on the left; work scrolls on the right<span style="color:#8A887F"> &mdash; The offer is never off screen. Halves the width available to the work, which hurts wide product shots.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">07</span>
+            <span style="font-size:15px;color:#1A1B1D">One Screen, Tabbed</span>
+            <span style="font-size:13px;line-height:1.55">No scroll at all — four tabs swap the panel<span style="color:#8A887F"> &mdash; Feels like a product, not a brochure, and proves you build. Hides content from anyone who does not click, and search engines see less.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">14</span>
+            <span style="font-size:15px;color:#1A1B1D">Console</span>
+            <span style="font-size:13px;line-height:1.55">Persistent left nav, content pane — the site behaves like an app<span style="color:#8A887F"> &mdash; Demonstrates product thinking in the chrome itself. Heavier to build, and an unusual shape for a site someone forwards by link.</span></span>
+          </div><div style="display:grid;grid-template-columns:34px 168px 1fr;gap:18px;padding:11px 0;border-top:1px solid #E5E3DB;align-items:baseline">
+            <span class="mono" style="font-size:12px;color:#D5D2C9">17</span>
+            <span style="font-size:15px;color:#1A1B1D">Stack</span>
+            <span style="font-size:13px;line-height:1.55">Full-width panels that stack on scroll, each one a single idea<span style="color:#8A887F"> &mdash; Paces the argument and never crowds a screen. Long by construction, and the effect is lost if someone skims.</span></span>
+          </div>
+      </div>
+    </section>
+  </div>
+
+  <div style="margin-top:auto;padding-top:22px;border-top:1px solid #D5D2C9;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px">
+    <div><div class="mono" style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A887F">Bracketed placeholders</div><p style="font-size:13px;margin-top:7px">Booking URL, response time and the six photographs are marked, not invented. Everything else is your real copy.</p></div>
+    <div><div class="mono" style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A887F">Type</div><p style="font-size:13px;margin-top:7px">Instrument Serif + Public Sans + IBM Plex Mono, deliberately not Fraunces &mdash; so structure, not the typeface, is what you are judging.</p></div>
+    <div><div class="mono" style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A887F">Where to go next</div><p style="font-size:13px;margin-top:7px">Pick two or three. I will build the winner out properly at desktop and phone width.</p></div>
+  </div>
+</div>
+</div>
+</x-dc>
+</body>
+</html>
