@@ -29,12 +29,12 @@ ${tag('08', 'Timeline', 'One vertical spine, 2017 to now')}
 
   <div style="display:grid;grid-template-columns:110px 1fr;gap:0">
     ${[
-      ['2017', 'In-house, complex product work begins', 'Career starts. Nine years in-house from here — no agency layer, no relay.', null],
-      ['2019', 'Independent practice', 'Ran an independent practice, 2019–2022 — 15+ early-stage clients.', null],
-      ['2022', 'Regulated healthcare software', 'DICOM redaction inside FDA-regulated trial software. Audit requirements, clinical SMEs and imaging data that cannot be wrong.', '03'],
-      ['2023', 'Medical imaging review', 'Dense diagnostic data, an expert audience and no room for a wrong default.', '04'],
-      ['2024', 'Money movement', 'Cashier and deposit flows for a transactional product — trust at the exact moment a user decides to stop.', '05'],
-      ['2025', 'A design system non-designers could build in', 'Components, documentation and enough guardrails to be safe in other hands.', '06'],
+      ['2017', 'In-house, on complex product work', 'Where the nine years start. All roles in-house — no agency layer, no relay.', null],
+      ['2019–22', 'Independent practice', 'Ran an independent practice, 2019–2022 — 15+ early-stage clients.', null],
+      ['[YEAR]', 'Regulated healthcare software', 'DICOM redaction inside FDA-regulated trial software. Audit requirements, clinical SMEs and imaging data that cannot be wrong.', '03'],
+      ['[YEAR]', 'Medical imaging review', 'Dense diagnostic data, an expert audience and no room for a wrong default.', '04'],
+      ['[YEAR]', 'Money movement', 'Cashier and deposit flows for a transactional product — trust at the exact moment a user decides to stop.', '05'],
+      ['[YEAR]', 'A design system non-designers could build in', 'Components, documentation and enough guardrails to be safe in other hands.', '06'],
       ['Now', 'Available for agency overflow', 'Senior capacity, no ramp. Your name on the work, mine on the invoice.', null]
     ].map((e,i,arr)=>`<div style="display:contents">
       <div style="padding:26px 0;text-align:right;padding-right:28px;border-right:1px solid ${P.rule};position:relative">
@@ -330,7 +330,6 @@ ${tag('13', 'Three Doors', 'The fold is a choice between three engagements')}
     ${C.ways.map((w,i)=>`<div style="border:1px solid ${i===1?P.green:P.rule};${i===1?`background:${P.paper2};`:''}padding:34px 30px;display:flex;flex-direction:column;gap:18px;min-height:420px">
       <div style="display:flex;justify-content:space-between;align-items:baseline">
         ${lab('Door ' + String(i+1).padStart(2,'0'))}
-        ${i===1 ? `<span class="mono" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:${P.green}">Most booked</span>` : ''}
       </div>
       <h2 style="font-size:30px">${w[0]}</h2>
       <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;color:${P.ink};line-height:1">${w[1]}</div>

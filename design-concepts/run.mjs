@@ -65,7 +65,7 @@ const mainHtml = `
   </div>
 
   <div style="margin-top:auto;padding-top:22px;border-top:1px solid ${P.rule};display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px">
-    <div>${lab('Bracketed placeholders')}<p style="font-size:13px;margin-top:7px">Booking URL, response time and the six photographs are marked, not invented. Everything else is your real copy.</p></div>
+    <div>${lab('Bracketed placeholders')}<p style="font-size:13px;margin-top:7px">Booking URL, response time, project dates and the six photographs are marked, not invented. Everything else is your real copy.</p></div>
     <div>${lab('Type')}<p style="font-size:13px;margin-top:7px">Instrument Serif + Public Sans + IBM Plex Mono, deliberately not Fraunces &mdash; so structure, not the typeface, is what you are judging.</p></div>
     <div>${lab('Where to go next')}<p style="font-size:13px;margin-top:7px">Pick two or three. I will build the winner out properly at desktop and phone width.</p></div>
   </div>
